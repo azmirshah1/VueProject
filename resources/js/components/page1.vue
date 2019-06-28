@@ -5,10 +5,40 @@
                 <div class="card">
                     <div class="card-header">Example Component</div>
                     <div class="card-body">
-                        Page - Index. {{ data }}
+                        Page 1. {{ data }}
                         <router-link :to="{name: 'page1'}" >Page 1</router-link>
                         <router-link :to="{name: 'page2'}" >Page 2</router-link>
-                        <router-view class="view"> </router-view>
+
+                        <table class="table table-hover table-bordered">
+                          <thead>
+                            <tr>
+                              <th width="1%">No</th>
+                              <th>Name</th>
+
+                            </tr>
+                          </thead>
+                          <tbody v-if="datas.length" class="data-ada">
+                              <tr v-for="data, index in datas">
+
+                                  <td>{{ data.id }}</td>
+                                  <td>{{ data.nama }} <span v-if="data.id == 2 "> Oke..</span></td>
+                                </tr>
+                            </tbody>
+                            <tbody class="data-tidak-ada" v-else>
+                              <tr ><td colspan="2"  class="text-center">Tidak Ada Data</td></tr>
+                          </tbody>
+                        </table>
+                        Number 1:
+                        <input type="text" name="name" v-model="value_one" />
+                        Number 2:
+                        <input type="text" name="alamat" v-model="value_two" />
+
+                        <!-- total -->
+                        <button type="submit" name="add" v-on:click ="tambah()" > + </button>
+                        <button type="submit" name="sub" v-on:click ="tolak()" > - </button>
+                        <button type="submit" name="devide" v-on:click ="bahagi()" > / </button>
+                        <button type="submit" name="time" v-on:click ="darab()" > x </button>
+                        <p>Total is: {{ total }}</p>
                     </div>
                 </div>
             </div>
